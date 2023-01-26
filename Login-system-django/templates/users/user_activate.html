@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+	{% block content %}
+
+		<div class="container mt-5">
+			<div>
+				<p class="alert alert-primary text-dark">We have send the password to {{ user_activate.email }}<br>Enter this password</p>
+				{% if error_message %}
+					<p class="alert alert-danger"> Error </p>
+				{% endif %}
+			</div>
+			<!-- form -->
+			<form method="POST">
+				{% csrf_token %}
+				<!-- form widgets -->
+				<label for="password">Password: </label>
+				<input class="form-control" type="text" name="password" id="password" placeholder="Enter your password"><br>
+				<button class="btn btn-primary"> Send </button>
+			</form>
+			<!-- end form -->
+		</div>
+
+	{% endblock content %}

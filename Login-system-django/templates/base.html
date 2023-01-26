@@ -1,0 +1,70 @@
+{% load static %}
+<!-- URLS -->
+{% url 'users:signup' as signup %}
+{% url 'users:login' as login %}
+{% url 'users:logout' as logout %}
+{% url 'home' as home %}
+<!-- END URLS -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> Login system </title>
+	<!-- <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"> -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap-login-form.min.css' %}" />
+</head>
+<body>
+
+	<!-- Header -->
+    <header id="home">
+      
+      <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <div>
+            <a class="navbar-brand" href="{{ home }}">
+               Home
+            </a>
+          </div>
+
+          <div class="text-right">
+          <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Website-Menu" aria-controls="Website-Menu" aria-expanded="false" aria-label="Toggle Navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="Website-Menu">
+            <ul class="navbar-nav mr-auto">
+              {% if user.is_authenticated %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ logout }}">Logout</a>
+                </li>
+              {% else %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ signup }}">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ login }}">Login</a>
+                </li>
+              {% endif %}
+            </ul>
+          </div>
+          </div>
+        </div>
+      </nav>
+    </header><br><br>
+
+    <!-- block content -->
+    <div>
+    	{% block content %}
+
+    	{% endblock content %}
+    </div>
+    <!-- endblock content -->
+
+    <!-- script -->
+    <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!-- end script -->
+</body>
+</html>

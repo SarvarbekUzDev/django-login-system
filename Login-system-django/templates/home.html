@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+	{% block content %}
+	<!-- messages -->
+	 	{% if messages %}
+	 		{% for message in messages %}
+	 			<p class="alert alert-success"> {{ message }} </p>
+	 		{% endfor %}
+	 	{% endif %}
+ 	<!-- end messages -->
+
+	<section class="about mt-5" id="about">
+      <div class="container">
+	 	{% if user.is_authenticated %}
+	 		<h3> {{ user }} </h3>
+	 	{% else %}
+	 		<h3> Sign up or Login </h3>
+	 	{% endif %}
+      </div>
+    </section>
+
+	{% endblock content %}
