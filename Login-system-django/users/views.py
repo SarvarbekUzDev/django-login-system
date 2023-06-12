@@ -52,7 +52,7 @@ class SignUpView(View):
 				user.save()
 				
 				return redirect("users:useractivate", request.POST.get("username"))
-			except ZeroDivisionError as e:
+			except Exception as e:
 				messages.error(request, "Error!")
 				return render(request, "users/signup.html", {"form":form})
 
